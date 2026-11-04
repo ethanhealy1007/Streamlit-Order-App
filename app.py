@@ -5,6 +5,7 @@ Run locally with:  streamlit run app.py
 """
 
 import hmac
+import traceback
 from decimal import Decimal
 
 import streamlit as st
@@ -128,6 +129,7 @@ def submit_order(customer_id, product_id, quantity, reviewed_price, confirmed,
     try:
         saved = db.insert_order(customer_id, product_id, quantity, current_price)
     except Exception:
+        traceback.print_exc()  # details go to the private server log, not the page
         # Generic message only: never show the URL or key
         st.error("The order could not be saved to the database. Please try again. "
                  "No order was saved.")
@@ -173,7 +175,12 @@ if refresh_clicked or "customers" not in st.session_state:
     try:
         load_all_data()
         st.session_state.history_error = False
+    except ValueError as error:
+        # config.py raises ValueError with a setup hint (it never includes the key)
+        st.error(f"Setup error: {error}")
+        st.stop()
     except Exception:
+        traceback.print_exc()  # details go to the private server log, not the page
         st.error("Could not load data from Supabase. Check the connection settings "
                  "and select Refresh Data to try again.")
         st.stop()
