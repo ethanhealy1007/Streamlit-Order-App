@@ -2,7 +2,7 @@
 
 A Streamlit web app that creates orders for existing customers in a Supabase database. Users pick a customer and product by name, enter a quantity, review the order, confirm it, and submit. Every saved order is verified by querying the database again, and the Order History updates automatically.
 
-**Live app:** https://YOUR-APP-NAME.streamlit.app
+**Live app:** https://ethan-order-entry-app.streamlit.app/
 
 **Access:** the app is protected by a password that is checked on the server before any database access. The password is provided privately through the course submission page.
 
@@ -57,15 +57,15 @@ A Streamlit web app that creates orders for existing customers in a Supabase dat
 
 | # | Test | Expected result | Result |
 |---|---|---|---|
-| 1 | Open the deployed app | Interface loads after authorized access (wrong password is rejected) | ☐ |
-| 2 | View customers and products | Records are retrieved from Supabase | ☐ |
-| 3 | Try an invalid quantity (0, negative, decimal) | Input is prevented by the number input | ☐ |
-| 4 | Submit without confirmation | Warning shown; no order is inserted | ☐ |
-| 5 | Confirm and submit a valid order | Exactly one order is inserted | ☐ |
-| 6 | View the verification table | Newly saved order is retrieved from Supabase | ☐ |
-| 7 | Refresh or interact with another widget | Previously submitted order is not inserted again | ☐ |
-| 8 | Refresh order history | Saved order remains visible | ☐ |
-| EC | Filter order history by customer | Only that customer's orders and their total value are shown | ☐ |
+| 1 | Open the deployed app | Interface loads after authorized access (wrong password is rejected) | ✅ |
+| 2 | View customers and products | Records are retrieved from Supabase | ✅ |
+| 3 | Try an invalid quantity (0, negative, decimal) | Input is prevented by the number input | ✅ |
+| 4 | Submit without confirmation | Warning shown; no order is inserted | ✅ |
+| 5 | Confirm and submit a valid order | Exactly one order is inserted | ✅ |
+| 6 | View the verification table | Newly saved order is retrieved from Supabase | ✅ |
+| 7 | Refresh or interact with another widget | Previously submitted order is not inserted again | ✅ |
+| 8 | Refresh order history | Saved order remains visible | ✅ |
+| EC | Filter order history by customer | Only that customer's orders and their total value are shown | ✅ |
 
 ### Screenshots
 
